@@ -11,27 +11,28 @@
 
   function Service(RouteResourceFactory) {
     var self = this;
-    self.resource = null;
-    /* Lifecycle hooks */
-    self.$onInit = onInit;
+
     /* Public methods */
     self.getCharacters = getCharacters;
+    self.getStoriesByCharacterId = getStoriesByCharacterId;
 
-    onInit();
-
-    function onInit() {
-      self.resource = RouteResourceFactory.create();
-    }
-
-    function getCharacters(val) {
-      if (self.resource)
-        self.resource.getCharacters(val).then(function (response) {
-          $scope.charInfoArr = response.data.data.results;
-          return response.data.data.results.map(function (item) {
-            console.log(item.name);
-          });
+    function getCharacters(character) {
+      RouteResourceFactory.getCharacters({ nameStartsWith: character }).$promise.then(function (response) {
+        return response.data.results.map(function (item) {
+          console.log(item);
+          getStoriesByCharacterId(item.id);
         });
+      });
     };
+
+
+    function getStoriesByCharacterId(characterId) {
+      RouteResourceFactory.getStoriesByCharacterId({ characterId: characterId }).$promise.then(function (response) {
+        return response.data.results.map(function (item) {
+          console.log(item);
+        });
+      });
+    }
 
   }
 }());
