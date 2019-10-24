@@ -24,7 +24,14 @@
         "angular": "1.5.8",
         "angular-animate": "1.5.8",
         "angular-aria": "1.5.8",
-        "angular-material": "1.1.1"
+        "angular-bind-html-compile-ci-dev": "1.1.1",
+        "angular-immutable": "0.1.2",
+        "angular-material": "1.1.1",
+        "angular-material-icons": "0.6.0",
+        "angular-messages": "1.5.8",
+        "angular-resource": "1.5.5",
+        "angular-ui-mask": "^1.8.3",
+        "angular-ui-router": "^0.3.1"
     },
     "devDependencies": {
         "browser-sync": "^2.26.3",
