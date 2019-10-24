@@ -21,7 +21,7 @@
     "homepage": "https://github.com/emanoelvianna/get-heroes#readme",
     "dependencies": {
         "please-wait": "0.0.5",
-        "angular": "1.5.8",
+        "angular": "1.5.11",
         "angular-animate": "1.5.8",
         "angular-aria": "1.5.8",
         "angular-bind-html-compile-ci-dev": "1.1.1",
