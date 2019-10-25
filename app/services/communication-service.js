@@ -10,11 +10,22 @@
   ];
 
   function Service(RouteResourceFactory) {
+    var HEROES = {
+      DAREDEVIL: 'Daredevil',
+      HULK: 'Hulk',
+      WOLVERINE: 'Wolverine'
+    };
     var self = this;
 
+    /* Lifecycle hooks */
+    self.$onInit = onInit;
     /* Public methods */
     self.getCharacters = getCharacters;
     self.getStoriesByCharacterId = getStoriesByCharacterId;
+
+    function onInit() {
+      
+    }
 
     function getCharacters(character) {
       RouteResourceFactory.getCharacters({ nameStartsWith: character }).$promise.then(function (response) {

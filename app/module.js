@@ -1,5 +1,6 @@
 angular.module('app', [
     'routes',
     'services',
-    'uxComponent'
+    'uxComponent',
+    'ngMaterial'
 ]);
