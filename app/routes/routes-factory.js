@@ -29,7 +29,7 @@
         }
       },
 
-      getStoriesByCharacterId: {
+      getComicsByCharacterId: {
         url: SUFFIX + '/characters/:characterId/comics',
         method: 'GET',
         params: {

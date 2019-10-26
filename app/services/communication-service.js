@@ -8,11 +8,12 @@
   Service.$inject = [
     '$q',
     'routes.RouteResourceFactory',
+    'model.ComicFactory',
     'model.HeroFactory'
   ];
 
-  function Service($q, RouteResourceFactory, HeroFactory) {
-    var heroesSelected = ['Daredevil', 'Hulk', 'Wolverine'];
+  function Service($q, RouteResourceFactory, ComicFactory, HeroFactory) {
+    var heroesSelected = ['Daredevil', 'Doctor Strange', 'Black Panther'];
     var heroes = [];
     var self = this;
 
@@ -25,9 +26,9 @@
         RouteResourceFactory.getCharacters({ nameStartsWith: heroe }).$promise.then(function (response) {
           return response.data.results.map(function (item) {
             var heroe = new HeroFactory.create(item.name, item.description, item.thumbnail);
-            _getStoriesByCharacterId(item.id).then(function (stories) {
-              stories.forEach(function (storie) {
-                heroe.pushStorie(storie);
+            _getComicsByCharacterId(item.id).then(function (comics) {
+              comics.forEach(function (comic) {
+                heroe.pushComic(comic);
               });
               heroes.push(heroe);
               if (heroes.length == 3)
@@ -41,14 +42,15 @@
       return request.promise;
     };
 
-    function _getStoriesByCharacterId(characterId) {
+    function _getComicsByCharacterId(characterId) {
       var request = $q.defer();
-      var stories = [];
-      RouteResourceFactory.getStoriesByCharacterId({ characterId: characterId }).$promise.then(function (response) {
+      var comics = [];
+      RouteResourceFactory.getComicsByCharacterId({ characterId: characterId }).$promise.then(function (response) {
         response.data.results.map(function (item) {
-          stories.push(item);
+          var comic = new ComicFactory.create(item.title, item.description, item.thumbnail);
+          comics.push(comic);
         });
-        request.resolve(stories);
+        request.resolve(comics);
       }, function (err) {
         throw Error(err);
       });

@@ -24,7 +24,7 @@
       CommunicationService.getHeroes().then(function (heroes) {
         self.heroes = heroes;
         console.log(self.heroes);
-        console.log(self.heroes[0].getStories())
+        console.log(self.heroes[0].getComics())
       }, function (err) {
         throw Error(err);
       });
