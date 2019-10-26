@@ -30,7 +30,7 @@
       },
 
       getStoriesByCharacterId: {
-        url: SUFFIX + '/characters/:characterId/stories',
+        url: SUFFIX + '/characters/:characterId/comics',
         method: 'GET',
         params: {
           characterId: '@characterId',

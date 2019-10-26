@@ -1,0 +1,28 @@
+<div class="md-padding">
+    <h2>Conheça algumas das histórias dos meus heróis favoritos!</h2>
+    <p>Para começar, selecione um herói abaixo:</p>
+
+    <md-radio-group ng-model="$ctrl.heroSelected">
+        <div layout="row" layout-align="space-around center">
+            <md-radio-button ng-repeat="hero in $ctrl.heroes" ng-value="hero" aria-label="hero">
+                <img id="image" src="{{hero.getImage()}}" />
+                <div>{{hero.getName()}}</div>
+            </md-radio-button>
+        </div>
+    </md-radio-group>
+    <div ng-if="$ctrl.heroSelected">
+        <div ng-repeat="storie in $ctrl.heroSelected.getStories()">
+            <div layout="row" layout-align="center center">
+                <md-card>
+                    <img src="{{hero.getImage()}}" />
+                    <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span>{{storie.title}}</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                </md-card>
+            </div>
+        </div>
+    </div>
+</div>

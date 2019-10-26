@@ -6,43 +6,53 @@
     .service('services.CommunicationService', Service);
 
   Service.$inject = [
-    'routes.RouteResourceFactory'
+    '$q',
+    'routes.RouteResourceFactory',
+    'model.HeroFactory'
   ];
 
-  function Service(RouteResourceFactory) {
-    var HEROES = {
-      DAREDEVIL: 'Daredevil',
-      HULK: 'Hulk',
-      WOLVERINE: 'Wolverine'
-    };
+  function Service($q, RouteResourceFactory, HeroFactory) {
+    var heroesSelected = ['Daredevil', 'Hulk', 'Wolverine'];
+    var heroes = [];
     var self = this;
 
-    /* Lifecycle hooks */
-    self.$onInit = onInit;
     /* Public methods */
-    self.getCharacters = getCharacters;
-    self.getStoriesByCharacterId = getStoriesByCharacterId;
+    self.getHeroes = getHeroes;
 
-    function onInit() {
-      
-    }
-
-    function getCharacters(character) {
-      RouteResourceFactory.getCharacters({ nameStartsWith: character }).$promise.then(function (response) {
-        return response.data.results.map(function (item) {
-          console.log(item);
-          getStoriesByCharacterId(item.id);
+    function getHeroes() {
+      var request = $q.defer();
+      heroesSelected.forEach(function (heroe) {
+        RouteResourceFactory.getCharacters({ nameStartsWith: heroe }).$promise.then(function (response) {
+          return response.data.results.map(function (item) {
+            var heroe = new HeroFactory.create(item.name, item.description, item.thumbnail);
+            _getStoriesByCharacterId(item.id).then(function (stories) {
+              stories.forEach(function (storie) {
+                heroe.pushStorie(storie);
+              });
+              heroes.push(heroe);
+              if (heroes.length == 3)
+                request.resolve(heroes);
+            }, function (err) {
+              throw Error(err);
+            });
+          });
         });
       });
+      return request.promise;
     };
 
-
-    function getStoriesByCharacterId(characterId) {
+    function _getStoriesByCharacterId(characterId) {
+      var request = $q.defer();
+      var stories = [];
       RouteResourceFactory.getStoriesByCharacterId({ characterId: characterId }).$promise.then(function (response) {
-        return response.data.results.map(function (item) {
-          console.log(item);
+        response.data.results.map(function (item) {
+          stories.push(item);
         });
+        request.resolve(stories);
+      }, function (err) {
+        throw Error(err);
       });
+      return request.promise;
     }
 
   }

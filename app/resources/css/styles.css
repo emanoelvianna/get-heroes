@@ -3,5 +3,14 @@
 }
 
 #logo {
-    width: 150px !important;
+    width: 100px !important;
+}
+
+#image {
+    background-color: #aaa;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: relative;
 }
