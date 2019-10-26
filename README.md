@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este repositório apresentação uma solução para o problema proposto pela empresa King Host. O problema em questão era realizar o consumo da api da Marvel Comics, apresentando três dos meus heróis favoritos e cinco histórias das quais eles participam.
+Este repositório apresentação uma solução para o problema proposto pela empresa KingHost. O problema em questão era realizar o consumo da api da Marvel Comics, apresentando três dos meus heróis favoritos e cinco histórias das quais eles participam.
 
 ## Configuração básica
 
@@ -18,5 +18,6 @@ Google Chrome : [52+](https://www.google.com.br/chrome/browser/desktop/)
 Na raiz do projeto executar:
 
 > npm install
+
 > npm start
 
