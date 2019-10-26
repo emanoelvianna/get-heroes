@@ -18,5 +18,6 @@ Google Chrome : [52+](https://www.google.com.br/chrome/browser/desktop/)
 Na raiz do projeto executar:
 
 > npm install
+
 > npm start
 
