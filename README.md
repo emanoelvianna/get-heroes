@@ -6,7 +6,7 @@ Este repositório apresentação uma solução para o problema proposto pela emp
 
 ## Configuração básica
 
-O desenvolvimento desta aplicação foi realizado sobre a linguagem JavaScript utilizando-se dos frameworks AngularJS e Angular Material. No entanto, aqui também foi empregado outras ferramentas para otimizar o desenvolvimento como o NPM (package.json), o otimizador de tarefas gulpfile.js, o live reload browser-sync entre outras ferramentas.
+O desenvolvimento desta aplicação foi realizado sobre a linguagem JavaScript utilizando-se dos frameworks AngularJS e Angular Material. No entanto, aqui também foi empregado outras ferramentas para otimizar o desenvolvimento como o NPM (package.json), o otimizador de tarefas gulpfile.js, o live reload browser-sync assim como outras ferramentas.
 
 ### Dependências
 
