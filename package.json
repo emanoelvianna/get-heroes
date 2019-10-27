@@ -30,7 +30,8 @@
         "angular-messages": "^1.5.8",
         "angular-resource": "^1.5.5",
         "angular-ui-mask": "^1.8.3",
-        "angular-ui-router": "^0.3.1"
+        "angular-ui-router": "^0.3.1",
+        "please-wait": "0.0.5"
     },
     "devDependencies": {
         "browser-sync": "^2.26.3",

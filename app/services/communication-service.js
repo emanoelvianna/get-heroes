@@ -7,12 +7,13 @@
 
   Service.$inject = [
     '$q',
-    'routes.RouteResourceFactory',
+    'model.HeroFactory',
     'model.ComicFactory',
-    'model.HeroFactory'
+    'routes.RouteResourceFactory',
+    'services.LoadingScreenService'
   ];
 
-  function Service($q, RouteResourceFactory, ComicFactory, HeroFactory) {
+  function Service($q, HeroFactory, ComicFactory, RouteResourceFactory, LoadingScreenService) {
     var heroesSelected = ['Daredevil', 'Doctor Strange', 'Black Panther'];
     var heroes = [];
     var self = this;
@@ -21,6 +22,7 @@
     self.getHeroes = getHeroes;
 
     function getHeroes() {
+      LoadingScreenService.start();
       var request = $q.defer();
       heroesSelected.forEach(function (heroe) {
         RouteResourceFactory.getCharacters({ nameStartsWith: heroe }).$promise.then(function (response) {
@@ -31,8 +33,10 @@
                 heroe.pushComic(comic);
               });
               heroes.push(heroe);
-              if (heroes.length == 3)
+              if (heroes.length == 3) {
+                LoadingScreenService.finish();
                 request.resolve(heroes);
+              }
             }, function (err) {
               throw Error(err);
             });
