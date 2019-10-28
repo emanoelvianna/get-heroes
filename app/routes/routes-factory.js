@@ -11,9 +11,9 @@
 
   function RouteResourceFactory($resource) {
     const SUFFIX = 'http://gateway.marvel.com/v1/public';
-    const KEY = '001ac6c73378bbfff488a36141458af2';
-    const TS = 'thesoer';
-    const HASH = '72e5ed53d1398abb831c3ceec263f18b';
+    const KEY = '1e229818860f7081c532e634d8f6ae65';
+    const TS = '1504796200286';
+    const HASH = 'e02be810b65957f4b60b71ca89b8835f';
 
     return $resource({}, {}, {
 
